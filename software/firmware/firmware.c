@@ -2,6 +2,7 @@
 #include "periphs.h"
 #include "iob-uart.h"
 #include "printf.h"
+#include "iob-ssd.h"
 
 char *send_string = "Sending this string as a file to console.\n"
                     "The file is then requested back from console.\n"
@@ -51,7 +52,7 @@ int main()
   printf("Value of Pi = %f\n\n", 3.1415);
 
   //test file send
-  char *sendfile = malloc(1000);
+  /*char *sendfile = malloc(1000);
   int send_file_size = 0;
   send_file_size = string_copy(sendfile, send_string);
   uart_sendfile("Sendfile.txt", send_file_size, sendfile);
@@ -69,7 +70,10 @@ int main()
   }
 
   free(sendfile);
-  free(recvfile);
+  free(recvfile);*/
+
+  ssd_init(SSD_BASE);
+  
 
   uart_finish();
 }
