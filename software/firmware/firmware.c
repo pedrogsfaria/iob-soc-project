@@ -17,7 +17,7 @@ int main()
   printf("\n\nInit done \n");
 
   // ********* SSD Test ********* //
-  uint16_t ssd_display = 0xAB24;  
+  uint16_t ssd_display = 0x0123;  
   
   printf("\n\nSSD set number \n");
   ssd_set_number(ssd_display);
