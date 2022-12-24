@@ -20,9 +20,7 @@ int main()
   uint16_t ssd_display = 0x0123;  
   
   printf("\n\nSSD set number \n");
-  ssd_set_number(ssd_display);
- 
-  while(1);  
+  ssd_set_number(ssd_display);  
 
   uart_finish();
 }
