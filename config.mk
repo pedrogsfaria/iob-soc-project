@@ -25,8 +25,8 @@ USE_DDR ?=0
 RUN_EXTMEM ?=0
 
 #IM
-IM_ADDR_W := 32
-IM_DATA_W := 32
+IM_DATA_W := 12
+IM_ADDR_W := 19
 
 #DATA CACHE ADDRESS WIDTH (tag + index + offset)
 DCACHE_ADDR_W:=24

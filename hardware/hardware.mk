@@ -34,6 +34,7 @@ include $(IM_DIR)/hardware/hardware.mk
 #HARDWARE PATHS
 INC_DIR:=$(HW_DIR)/include
 SRC_DIR:=$(HW_DIR)/src
+IM_ROM_DIR:=$(HW_DIR)/im_rom
 
 #DEFINES
 DEFINE+=$(defmacro)DDR_DATA_W=$(DDR_DATA_W)
@@ -61,7 +62,7 @@ endif
 VSRC+=$(SRC_DIR)/boot_ctr.v $(SRC_DIR)/int_mem.v $(SRC_DIR)/sram.v
 VSRC+=system.v
 
-HEXPROGS=boot.hex firmware.hex
+HEXPROGS=boot.hex firmware.hex im_rom
 
 # make system.v with peripherals
 system.v: $(SRC_DIR)/system_core.v
@@ -80,6 +81,12 @@ boot.hex: $(BOOT_DIR)/boot.bin
 firmware.hex: $(FIRM_DIR)/firmware.bin
 	$(PYTHON_DIR)/makehex.py $< $(FIRM_ADDR_W) > $@
 	$(PYTHON_DIR)/hex_split.py firmware .
+
+im_rom: 
+	cp $(IM_ROM_DIR)/rom0.hex .
+	cp $(IM_ROM_DIR)/rom1.hex .
+	cp $(IM_ROM_DIR)/rom2.hex .
+
 
 #clean general hardware files
 hw-clean: gen-clean
