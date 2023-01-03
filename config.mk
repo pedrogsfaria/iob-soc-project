@@ -24,6 +24,10 @@ SRAM_ADDR_W ?=15
 USE_DDR ?=0
 RUN_EXTMEM ?=0
 
+#IM
+IM_DATA_W := 12
+IM_ADDR_W := 19
+
 #DATA CACHE ADDRESS WIDTH (tag + index + offset)
 DCACHE_ADDR_W:=24
 
@@ -36,7 +40,7 @@ INIT_MEM ?=1
 #PERIPHERAL LIST
 #must match respective submodule CORE_NAME in the core.mk file of the submodule
 #PERIPHERALS:=UART
-PERIPHERALS ?=UART
+PERIPHERALS ?=UART IM
 
 #RISC-V HARD MULTIPLIER AND DIVIDER INSTRUCTIONS
 USE_MUL_DIV ?=1
@@ -63,6 +67,7 @@ DOC ?= pb
 
 #IOB LIBRARY
 UART_HW_DIR:=$(UART_DIR)/hardware
+IM_HW_DIR:=$(IM_DIR)/hardware
 
 ####################################################################
 # DERIVED FROM PRIMARY PARAMETERS: DO NOT CHANGE BELOW THIS POINT
@@ -88,6 +93,7 @@ UART_DIR=$(ROOT_DIR)/submodules/UART
 LIB_DIR=$(ROOT_DIR)/submodules/LIB
 MEM_DIR=$(ROOT_DIR)/submodules/MEM
 AXI_DIR=$(ROOT_DIR)/submodules/AXI
+IM_DIR=$(ROOT_DIR)/submodules/IM
 
 #sw paths
 SW_DIR:=$(ROOT_DIR)/software
@@ -109,6 +115,8 @@ DOC_DIR=$(ROOT_DIR)/document/$(DOC)
 #define macros
 DEFINE+=$(defmacro)DATA_W=$(DATA_W)
 DEFINE+=$(defmacro)ADDR_W=$(ADDR_W)
+DEFINE+=$(defmacro)IM_DATA_W=$(IM_DATA_W)
+DEFINE+=$(defmacro)IM_ADDR_W=$(IM_ADDR_W)
 DEFINE+=$(defmacro)BOOTROM_ADDR_W=$(BOOTROM_ADDR_W)
 DEFINE+=$(defmacro)SRAM_ADDR_W=$(SRAM_ADDR_W)
 DEFINE+=$(defmacro)FIRM_ADDR_W=$(FIRM_ADDR_W)

@@ -12,6 +12,9 @@ endif
 #uart
 include $(UART_DIR)/software/embedded/embedded.mk
 
+#im
+include $(IM_DIR)/software/embedded/embedded.mk
+
 #HEADERS
 HDR+=periphs.h
 
