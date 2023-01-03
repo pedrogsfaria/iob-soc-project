@@ -27,6 +27,9 @@ include $(CACHE_DIR)/hardware/hardware.mk
 #UART
 include $(UART_DIR)/hardware/hardware.mk
 
+#SSD
+include $(SSD_DIR)/hardware/hardware.mk
+
 #IM
 include $(IM_DIR)/hardware/hardware.mk
 

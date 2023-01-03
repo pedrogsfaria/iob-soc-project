@@ -2,12 +2,17 @@
 `include "system.vh"
 
 module top_system(
-	          input         clk,
-	          input         reset,
+	          input        clk,
+	          input        reset,
 
 	          //uart
-	          output        uart_txd,
-	          input         uart_rxd
+	          output       uart_txd,
+	          input        uart_rxd,
+
+		  //ssd
+		  output [3:0] ssd_anode,		  
+		  output       ssd_dp,
+		  output [6:0] ssd_seg
 		  );
 
    //
@@ -46,7 +51,12 @@ module top_system(
       .uart_txd      (uart_txd),
       .uart_rxd      (uart_rxd),
       .uart_rts      (),
-      .uart_cts      (1'b1)
+      .uart_cts      (1'b1),
+
+      //SSD
+      .ssd_anode     (ssd_anode),
+      .ssd_dp        (ssd_dp),      
+      .ssd_seg       (ssd_seg)    
       );
 
 endmodule

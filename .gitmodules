@@ -16,6 +16,9 @@
 [submodule "submodules/LIB"]
 	path = submodules/LIB
 	url = git@github.com:IObundle/iob-lib.git
+[submodule "submodules/SSD"]
+	path = submodules/SSD
+	url = https://github.com/pedrogsfaria/iob-ssd
 [submodule "submodules/IM"]
 	path = submodules/IM
 	url = https://github.com/pedrogsfaria/iob-im

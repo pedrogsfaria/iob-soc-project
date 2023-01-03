@@ -40,7 +40,7 @@ INIT_MEM ?=1
 #PERIPHERAL LIST
 #must match respective submodule CORE_NAME in the core.mk file of the submodule
 #PERIPHERALS:=UART
-PERIPHERALS ?=UART IM
+PERIPHERALS ?=UART SSD IM
 
 #RISC-V HARD MULTIPLIER AND DIVIDER INSTRUCTIONS
 USE_MUL_DIV ?=1
@@ -67,6 +67,7 @@ DOC ?= pb
 
 #IOB LIBRARY
 UART_HW_DIR:=$(UART_DIR)/hardware
+SSD_HW_DIR:=$(SSD_DIR)/hardware
 IM_HW_DIR:=$(IM_DIR)/hardware
 
 ####################################################################
@@ -93,6 +94,7 @@ UART_DIR=$(ROOT_DIR)/submodules/UART
 LIB_DIR=$(ROOT_DIR)/submodules/LIB
 MEM_DIR=$(ROOT_DIR)/submodules/MEM
 AXI_DIR=$(ROOT_DIR)/submodules/AXI
+SSD_DIR=$(ROOT_DIR)/submodules/SSD
 IM_DIR=$(ROOT_DIR)/submodules/IM
 
 #sw paths
