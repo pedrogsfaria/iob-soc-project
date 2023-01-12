@@ -19,3 +19,9 @@
 [submodule "submodules/VGA"]
 	path = submodules/VGA
 	url = git@github.com:DanielProanoGuevara/iob-vga.git
+[submodule "submodules/SSD"]
+	path = submodules/SSD
+	url = https://github.com/pedrogsfaria/iob-ssd
+[submodule "submodules/IM"]
+	path = submodules/IM
+	url = https://github.com/pedrogsfaria/iob-im

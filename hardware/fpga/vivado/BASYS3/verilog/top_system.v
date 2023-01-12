@@ -2,12 +2,12 @@
 `include "system.vh"
 
 module top_system(
-	          input 	    clk,
-	          input 	    reset,
+      input 	    clk,
+      input 	    reset,
 
-	          //uart
-	          output 	    uart_txd,
-	          input 	    uart_rxd,
+      //uart
+      output 	    uart_txd,
+      input 	    uart_rxd,
 
 		  //VGA
 		  output 	    v_sync,
@@ -15,6 +15,11 @@ module top_system(
 		  output [3:0] 	    Red,
 		  output [3:0] 	    Green,
 		  output [3:0] 	    Blue
+
+		  //ssd
+		  output [3:0] ssd_anode,		  
+		  output       ssd_dp,
+		  output [6:0] ssd_seg      
 		  );
 
    //
@@ -65,6 +70,11 @@ module top_system(
       .Green(Green),
       .Blue(Blue),
       .pixel_ADDR(pixel_ADDR)  
+      
+      //SSD
+      .ssd_anode     (ssd_anode),
+      .ssd_dp        (ssd_dp),      
+      .ssd_seg       (ssd_seg)    
       );
 
 endmodule // top_system
