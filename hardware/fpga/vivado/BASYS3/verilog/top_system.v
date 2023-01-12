@@ -2,17 +2,24 @@
 `include "system.vh"
 
 module top_system(
-	          input        clk,
-	          input        reset,
+      input 	    clk,
+      input 	    reset,
 
-	          //uart
-	          output       uart_txd,
-	          input        uart_rxd,
+      //uart
+      output 	    uart_txd,
+      input 	    uart_rxd,
+
+		  //VGA
+		  output 	    v_sync,
+		  output 	    h_sync,
+		  output [3:0] 	    Red,
+		  output [3:0] 	    Green,
+		  output [3:0] 	    Blue
 
 		  //ssd
 		  output [3:0] ssd_anode,		  
 		  output       ssd_dp,
-		  output [6:0] ssd_seg
+		  output [6:0] ssd_seg      
 		  );
 
    //
@@ -20,6 +27,8 @@ module top_system(
    //
 
    //system reset
+   reg [15:0] cpixel = 4'hFFFF;
+   assign pixel = cpixel;
 
    wire                         sys_rst;
 
@@ -53,10 +62,20 @@ module top_system(
       .uart_rts      (),
       .uart_cts      (1'b1),
 
+      //VGA
+      .pixel(pixel),
+      .v_sync(v_sync),
+      .h_sync(h_sync),
+      .Red(Red),
+      .Green(Green),
+      .Blue(Blue),
+      .pixel_ADDR(pixel_ADDR)  
+      
       //SSD
       .ssd_anode     (ssd_anode),
       .ssd_dp        (ssd_dp),      
       .ssd_seg       (ssd_seg)    
       );
 
-endmodule
+endmodule // top_system
+

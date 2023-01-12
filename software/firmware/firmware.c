@@ -9,6 +9,7 @@
 #define REFRESH_RATE 0X07A120 // FPGA build
 
 
+
 int main()
 {
   
@@ -17,6 +18,8 @@ int main()
   ssd_init(SSD_BASE, REFRESH_RATE);
   im_init(IM_BASE);
 
+  printf("\n\n\nInit Done!\n\n\n"); 
+  
   uint16_t ssd_display = 0x0123;
   uint8_t mblock = 0;
 
