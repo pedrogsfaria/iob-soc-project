@@ -49,7 +49,7 @@ endif
 endif
 endif
 
-build: $(FPGA_OBJ)
+build: $(IM_ROM) $(FPGA_OBJ)
 
 #make the FPGA programming file either locally or remotely
 ifeq ($(INIT_MEM),1)

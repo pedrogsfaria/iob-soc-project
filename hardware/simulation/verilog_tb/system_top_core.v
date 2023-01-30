@@ -7,30 +7,32 @@
 
 module system_top 
   (
-   output                             trap,
+   output 			      trap,
    //tester uart
-   input                              uart_valid,
+   input 			      uart_valid,
    input [`iob_uart_swreg_ADDR_W-1:0] uart_addr,
-   input [`DATA_W-1:0]                uart_wdata,
-   input [3:0]                        uart_wstrb,
-   output [`DATA_W-1:0]               uart_rdata,
-   output                             uart_ready,
+   input [`DATA_W-1:0] 		      uart_wdata,
+   input [3:0] 			      uart_wstrb,
+   output [`DATA_W-1:0] 	      uart_rdata,
+   output 			      uart_ready,
 
-   //tester ROM
-   input 			      im_r_en,
-   input [`IM_ADDR_W-1:0] 	      im_r_addr,
-   output [`IM_DATA_W-1:0] 	      im_r_data,
+   //tester IM
+   input [9:0] 			      im_pixel_x,
+   input [9:0] 			      im_pixel_y,
+   output [11:0] 		      im_rgb, 
    
    //tester VGA
-   input [15:0] 		      pixel,
+   input [11:0] 		      rgb,
    output 			      v_sync,
    output 			      h_sync,
    output [3:0] 		      Red,
    output [3:0] 		      Green,
    output [3:0] 		      Blue,
-   output [31:0] 		      pixel_ADDR,
+   output [9:0] 		      pixel_x,
+   output [9:0] 		      pixel_y, 
 				      
-`include "iob_gen_if.vh"
+				      
+				      `include "iob_gen_if.vh"
    );
  
    localparam AXI_ID_W  = 4;

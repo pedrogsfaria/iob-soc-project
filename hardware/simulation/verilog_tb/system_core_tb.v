@@ -23,22 +23,24 @@ module system_tb;
   integer soc2cnsl_fd = 0, cnsl2soc_fd = 0;
 
 
-  //tester uart
-  reg       uart_valid;
-  reg [`iob_uart_swreg_ADDR_W-1:0] uart_addr;
-  reg [`DATA_W-1:0]      uart_wdata;
-  reg [3:0]              uart_wstrb;
-  wire [`DATA_W-1:0]     uart_rdata;
-  wire                   uart_ready;
+   //tester uart
+   reg 	  uart_valid;   
+   reg [`iob_uart_swreg_ADDR_W-1:0] uart_addr;   
+   reg [`DATA_W-1:0] 		   uart_wdata;
+   reg [3:0] 		 uart_wstrb;
+   wire [`DATA_W-1:0] 	 uart_rdata;
+   wire 		 uart_ready;
 
-  //tester vga  input [15:0] 	 pixel;
-  wire [15:0] 		 pixel;  
-  reg 	 v_sync;   
-  reg         h_sync;   
-  reg [3:0]   Red;   
-  reg [3:0]   Green;   
-  reg [3:0]  Blue;
-  wire [31:0] pixel_ADDR;
+  //tester vga  
+   reg [11:0] 		 rgb;  
+   reg 			 v_sync;   
+   reg 			 h_sync;   
+   reg [3:0] 		 Red;   
+   reg [3:0] 		 Green;   
+   reg [3:0] 		 Blue;
+   wire [9:0] 		 pixel_x;   
+   wire [9:0] 		 pixel_y;
+   
 
   //iterator
   integer                i = 0, n = 0;
@@ -142,17 +144,18 @@ system_top system_top
    .uart_rdata (uart_rdata),
    .uart_ready (uart_ready),
 
-   .im_r_en (1'b1),
-   .im_r_addr (pixel_ADDR[18:0]),
-   .im_r_data (pixel),
+   .im_pixel_x (pixel_x),
+   .im_pixel_y (pixel_y),
+   .im_rgb (rgb),
    
-   .pixel(pixel[11:0]),
+   .rgb(rgb),
    .v_sync(v_sync),
    .h_sync(h_sync),
    .Red(Red),
    .Green(Green),
    .Blue(Blue),
-   .pixel_ADDR(pixel_ADDR) 
+   .pixel_x(pixel_x),
+   .pixel_y(pixel_y)
    );
 
 

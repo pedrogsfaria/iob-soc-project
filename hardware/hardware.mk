@@ -68,7 +68,8 @@ endif
 VSRC+=$(SRC_DIR)/boot_ctr.v $(SRC_DIR)/int_mem.v $(SRC_DIR)/sram.v
 VSRC+=system.v
 
-HEXPROGS=boot.hex firmware.hex im_rom
+HEXPROGS=boot.hex firmware.hex
+IM_ROM=im_rom
 
 # make system.v with peripherals
 system.v: $(SRC_DIR)/system_core.v

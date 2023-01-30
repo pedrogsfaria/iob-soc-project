@@ -52,7 +52,7 @@ VSRC+=system_tb.v
 endif
 
 #RULES
-build: $(VSRC) $(VHDR) $(HEXPROGS)
+build: $(VSRC) $(VHDR) $(HEXPROGS) $(IM_ROM)
 ifeq ($(SIM_SERVER),)
 	make comp
 else
