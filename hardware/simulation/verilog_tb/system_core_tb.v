@@ -31,6 +31,15 @@ module system_tb;
   wire [`DATA_W-1:0]     uart_rdata;
   wire                   uart_ready;
 
+  //tester vga  input [15:0] 	 pixel;
+  wire [15:0] 		 pixel;  
+  reg 	 v_sync;   
+  reg         h_sync;   
+  reg [3:0]   Red;   
+  reg [3:0]   Green;   
+  reg [3:0]  Blue;
+  wire [31:0] pixel_ADDR;
+
   //iterator
   integer                i = 0, n = 0;
   integer                error, n_byte = 0;
@@ -40,6 +49,18 @@ module system_tb;
 
   //cpu trap signal
   wire                    trap;
+
+  initial begin
+
+     
+     #(1000000000/100) reset = 1;
+     
+     $display("Got here");
+     
+     $finish;
+     
+  end
+   
 
   initial begin
     //init cpu bus signals
@@ -104,7 +125,8 @@ module system_tb;
         $fclose(cnsl2soc_fd);
         txread_reg = 0;
       end
-    end
+    end // while (1)
+     
   end
 
 system_top system_top
@@ -118,7 +140,19 @@ system_top system_top
    .uart_wdata (uart_wdata),
    .uart_wstrb (uart_wstrb),
    .uart_rdata (uart_rdata),
-   .uart_ready (uart_ready)
+   .uart_ready (uart_ready),
+
+   .im_r_en (1'b1),
+   .im_r_addr (pixel_ADDR[18:0]),
+   .im_r_data (pixel),
+   
+   .pixel(pixel[11:0]),
+   .v_sync(v_sync),
+   .h_sync(h_sync),
+   .Red(Red),
+   .Green(Green),
+   .Blue(Blue),
+   .pixel_ADDR(pixel_ADDR) 
    );
 
 

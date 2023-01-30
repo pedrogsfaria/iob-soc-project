@@ -21,7 +21,7 @@ int main()
   printf("\n\n\nInit Done!\n\n\n"); 
   
   uint16_t ssd_display = 0x0123;
-  uint8_t mblock = 0;
+  uint8_t mblock = 2;
 
   printf("\n\nInit done \n");
   
@@ -30,6 +30,8 @@ int main()
 
   printf("Memory block set: %d\n", mblock);
   im_set(mblock);
+
+  while(1);
 
   uart_finish();
 }

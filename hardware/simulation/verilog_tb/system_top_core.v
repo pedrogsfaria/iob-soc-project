@@ -15,6 +15,21 @@ module system_top
    input [3:0]                        uart_wstrb,
    output [`DATA_W-1:0]               uart_rdata,
    output                             uart_ready,
+
+   //tester ROM
+   input 			      im_r_en,
+   input [`IM_ADDR_W-1:0] 	      im_r_addr,
+   output [`IM_DATA_W-1:0] 	      im_r_data,
+   
+   //tester VGA
+   input [15:0] 		      pixel,
+   output 			      v_sync,
+   output 			      h_sync,
+   output [3:0] 		      Red,
+   output [3:0] 		      Green,
+   output [3:0] 		      Blue,
+   output [31:0] 		      pixel_ADDR,
+				      
 `include "iob_gen_if.vh"
    );
  
@@ -89,63 +104,6 @@ module system_top
       .rst(rst)
       );   
 `endif //  `ifdef USE_DDR
-
-   
-   // **************** IM TB ****************
-   // REMOVE when connected to VGA 
-   //iterator
-   integer               i;
-
-   // ROM blocks
-   reg 			 r_en;			    
-   reg [`IM_ADDR_W-1:0]  r_addr;
-
-   assign im_r_en = r_en;
-   assign im_r_addr = r_addr;
-   
-   // RAM block
-   reg 			 w_en;			    
-   reg [`IM_ADDR_W-1:0]  w_addr;   
-   reg [`IM_DATA_W-1:0]  w_data;
-
-   assign im_w_en = w_en;
-   assign im_w_addr = w_addr;
-   assign im_w_data = w_data;
-
-   initial begin      
-      
-      // Initialize Inputs
-      r_en = 0;
-      r_addr = 0;
-      w_en = 0;
-      w_addr = 0;
-      w_data = 0;
-           
-      // Confirm data in memory blocks
-      @(posedge clk) #1;
-      r_en = 1; 
-      
-	 
-      // Individual mem readout
-      @(posedge clk) #1;
-      for(i = 0; i < 2**`IM_ADDR_W; i = i + 1) begin
-	 r_addr = i;
-
-	 @(posedge clk) #1;
-	 //$display("Data: %h", r_data);
-	 
-      end // for (i = 0; i < 2**`IM_ADDR_W; i = i + 1)
-      
-      @(posedge clk) #1;
-      @(posedge clk) #1;
-      @(posedge clk) #1;
-                  
-      r_en = 0;
-      @(posedge clk) #1;
-    
-      
-   end // initial begin
-   
     
    //finish simulation on trap
    /* always @(posedge trap) begin
