@@ -95,3 +95,7 @@ set_property PACKAGE_PIN V4 [get_ports {ssd_anode[2]}]
 	set_property IOSTANDARD LVCMOS33 [get_ports {ssd_anode[2]}]
 set_property PACKAGE_PIN W4 [get_ports {ssd_anode[3]}]					
 	set_property IOSTANDARD LVCMOS33 [get_ports {ssd_anode[3]}]
+
+## Switches Interface
+set_property PACKAGE_PIN V17 [get_ports {gpio_input}]
+  set_property IOSTANDARD LVCMOS33 [get_ports {gpio_input}]

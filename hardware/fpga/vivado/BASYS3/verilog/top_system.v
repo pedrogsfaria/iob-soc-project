@@ -19,7 +19,10 @@ module top_system(
       //ssd
       output [3:0] ssd_anode, 
       output 	   ssd_dp,
-      output [6:0] ssd_seg      
+      output [6:0] ssd_seg, 
+
+      //gpio
+      input 	   gpio_input		 
 		  );
 
    wire [9:0] 	   pixel_x;
@@ -64,24 +67,27 @@ module top_system(
       .uart_cts      (1'b1),
 
       //VGA
-      .rgb(rgb),
-      .v_sync(v_sync),
-      .h_sync(h_sync),
-      .Red(Red),
-      .Green(Green),
-      .Blue(Blue),
-      .pixel_x(pixel_x),
-      .pixel_y(pixel_y),
+      .rgb           (rgb),
+      .v_sync        (v_sync),
+      .h_sync        (h_sync),
+      .Red           (Red),
+      .Green         (Green),
+      .Blue          (Blue),
+      .pixel_x       (pixel_x),
+      .pixel_y       (pixel_y),
 
       //IM
-      .im_pixel_x (pixel_x),
-      .im_pixel_y (pixel_y),
-      .im_rgb (rgb),
+      .im_pixel_x    (pixel_x),
+      .im_pixel_y    (pixel_y),
+      .im_rgb        (rgb),
       
       //SSD
       .ssd_anode     (ssd_anode),
       .ssd_dp        (ssd_dp),      
-      .ssd_seg       (ssd_seg)    
+      .ssd_seg       (ssd_seg),
+
+      //GPIO
+      .gpio_input    (gpio_input)
       );
 
 endmodule // top_system

@@ -46,7 +46,7 @@ INIT_MEM ?=1
 #PERIPHERAL LIST
 #must match respective submodule CORE_NAME in the core.mk file of the submodule
 #PERIPHERALS:=UART
-PERIPHERALS ?=UART SSD IM VGA
+PERIPHERALS ?=UART SSD IM VGA GPIO
 
 #RISC-V HARD MULTIPLIER AND DIVIDER INSTRUCTIONS
 USE_MUL_DIV ?=1
@@ -76,6 +76,7 @@ UART_HW_DIR:=$(UART_DIR)/hardware
 VGA_HW_DIR:=$(VGA_DIR)/hardware
 SSD_HW_DIR:=$(SSD_DIR)/hardware
 IM_HW_DIR:=$(IM_DIR)/hardware
+GPIO_HW_DIR:=$(GPIO_DIR)/hardware
 
 ####################################################################
 # DERIVED FROM PRIMARY PARAMETERS: DO NOT CHANGE BELOW THIS POINT
@@ -104,6 +105,7 @@ MEM_DIR=$(ROOT_DIR)/submodules/MEM
 AXI_DIR=$(ROOT_DIR)/submodules/AXI
 SSD_DIR=$(ROOT_DIR)/submodules/SSD
 IM_DIR=$(ROOT_DIR)/submodules/IM
+GPIO_DIR=$(ROOT_DIR)/submodules/GPIO
 
 #sw paths
 SW_DIR:=$(ROOT_DIR)/software

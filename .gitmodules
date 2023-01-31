@@ -25,3 +25,6 @@
 [submodule "submodules/IM"]
 	path = submodules/IM
 	url = https://github.com/pedrogsfaria/iob-im
+[submodule "submodules/GPIO"]
+	path = submodules/GPIO
+	url = git@github.com:IObundle/iob-gpio.git

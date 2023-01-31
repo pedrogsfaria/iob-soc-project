@@ -36,6 +36,9 @@ include $(SSD_DIR)/hardware/hardware.mk
 #IM
 include $(IM_DIR)/hardware/hardware.mk
 
+#GPIO
+include $(GPIO_DIR)/hardware/hardware.mk
+
 
 #HARDWARE PATHS
 INC_DIR:=$(HW_DIR)/include
