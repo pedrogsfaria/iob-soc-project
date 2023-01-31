@@ -25,8 +25,14 @@ USE_DDR ?=0
 RUN_EXTMEM ?=0
 
 #IM
-IM_DATA_W := 12
-IM_ADDR_W := 19
+IM0_DATA_W ?= 12
+IM0_ADDR_W ?= 16
+IM1_DATA_W ?= 12
+IM1_ADDR_W ?= 15
+IM0_X_LEN ?= 221
+IM0_Y_LEN ?= 255
+IM1_X_LEN ?= 150
+IM1_Y_LEN ?= 212
 
 #DATA CACHE ADDRESS WIDTH (tag + index + offset)
 DCACHE_ADDR_W:=24
@@ -40,7 +46,7 @@ INIT_MEM ?=1
 #PERIPHERAL LIST
 #must match respective submodule CORE_NAME in the core.mk file of the submodule
 #PERIPHERALS:=UART
-PERIPHERALS ?=UART SSD IM VGA
+PERIPHERALS ?=UART SSD IM VGA GPIO
 
 #RISC-V HARD MULTIPLIER AND DIVIDER INSTRUCTIONS
 USE_MUL_DIV ?=1
@@ -70,6 +76,7 @@ UART_HW_DIR:=$(UART_DIR)/hardware
 VGA_HW_DIR:=$(VGA_DIR)/hardware
 SSD_HW_DIR:=$(SSD_DIR)/hardware
 IM_HW_DIR:=$(IM_DIR)/hardware
+GPIO_HW_DIR:=$(GPIO_DIR)/hardware
 
 ####################################################################
 # DERIVED FROM PRIMARY PARAMETERS: DO NOT CHANGE BELOW THIS POINT
@@ -98,6 +105,7 @@ MEM_DIR=$(ROOT_DIR)/submodules/MEM
 AXI_DIR=$(ROOT_DIR)/submodules/AXI
 SSD_DIR=$(ROOT_DIR)/submodules/SSD
 IM_DIR=$(ROOT_DIR)/submodules/IM
+GPIO_DIR=$(ROOT_DIR)/submodules/GPIO
 
 #sw paths
 SW_DIR:=$(ROOT_DIR)/software
@@ -119,8 +127,14 @@ DOC_DIR=$(ROOT_DIR)/document/$(DOC)
 #define macros
 DEFINE+=$(defmacro)DATA_W=$(DATA_W)
 DEFINE+=$(defmacro)ADDR_W=$(ADDR_W)
-DEFINE+=$(defmacro)IM_DATA_W=$(IM_DATA_W)
-DEFINE+=$(defmacro)IM_ADDR_W=$(IM_ADDR_W)
+DEFINE+=$(defmacro)IM0_DATA_W=$(IM0_DATA_W)
+DEFINE+=$(defmacro)IM0_ADDR_W=$(IM0_ADDR_W)
+DEFINE+=$(defmacro)IM1_DATA_W=$(IM1_DATA_W)
+DEFINE+=$(defmacro)IM1_ADDR_W=$(IM1_ADDR_W)
+DEFINE+=$(defmacro)IM0_X_LEN=$(IM0_X_LEN)
+DEFINE+=$(defmacro)IM0_Y_LEN=$(IM0_Y_LEN)
+DEFINE+=$(defmacro)IM1_X_LEN=$(IM1_X_LEN)
+DEFINE+=$(defmacro)IM1_Y_LEN=$(IM1_Y_LEN)
 DEFINE+=$(defmacro)BOOTROM_ADDR_W=$(BOOTROM_ADDR_W)
 DEFINE+=$(defmacro)SRAM_ADDR_W=$(SRAM_ADDR_W)
 DEFINE+=$(defmacro)FIRM_ADDR_W=$(FIRM_ADDR_W)

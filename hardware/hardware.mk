@@ -36,6 +36,9 @@ include $(SSD_DIR)/hardware/hardware.mk
 #IM
 include $(IM_DIR)/hardware/hardware.mk
 
+#GPIO
+include $(GPIO_DIR)/hardware/hardware.mk
+
 
 #HARDWARE PATHS
 INC_DIR:=$(HW_DIR)/include
@@ -68,7 +71,8 @@ endif
 VSRC+=$(SRC_DIR)/boot_ctr.v $(SRC_DIR)/int_mem.v $(SRC_DIR)/sram.v
 VSRC+=system.v
 
-HEXPROGS=boot.hex firmware.hex im_rom
+HEXPROGS=boot.hex firmware.hex
+IM_ROM=im_rom
 
 # make system.v with peripherals
 system.v: $(SRC_DIR)/system_core.v
@@ -91,7 +95,6 @@ firmware.hex: $(FIRM_DIR)/firmware.bin
 im_rom: 
 	cp $(IM_ROM_DIR)/rom0.hex .
 	cp $(IM_ROM_DIR)/rom1.hex .
-	cp $(IM_ROM_DIR)/rom2.hex .
 
 
 #clean general hardware files

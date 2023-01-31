@@ -23,13 +23,24 @@ module system_tb;
   integer soc2cnsl_fd = 0, cnsl2soc_fd = 0;
 
 
-  //tester uart
-  reg       uart_valid;
-  reg [`iob_uart_swreg_ADDR_W-1:0] uart_addr;
-  reg [`DATA_W-1:0]      uart_wdata;
-  reg [3:0]              uart_wstrb;
-  wire [`DATA_W-1:0]     uart_rdata;
-  wire                   uart_ready;
+   //tester uart
+   reg 	  uart_valid;   
+   reg [`iob_uart_swreg_ADDR_W-1:0] uart_addr;   
+   reg [`DATA_W-1:0] 		   uart_wdata;
+   reg [3:0] 		 uart_wstrb;
+   wire [`DATA_W-1:0] 	 uart_rdata;
+   wire 		 uart_ready;
+
+  //tester vga  
+   reg [11:0] 		 rgb;  
+   reg 			 v_sync;   
+   reg 			 h_sync;   
+   reg [3:0] 		 Red;   
+   reg [3:0] 		 Green;   
+   reg [3:0] 		 Blue;
+   wire [9:0] 		 pixel_x;   
+   wire [9:0] 		 pixel_y;
+   
 
   //iterator
   integer                i = 0, n = 0;
@@ -40,6 +51,18 @@ module system_tb;
 
   //cpu trap signal
   wire                    trap;
+
+  initial begin
+
+     
+     #(1000000000/10) reset = 1;
+     
+     $display("Got here");
+     
+     $finish;
+     
+  end
+   
 
   initial begin
     //init cpu bus signals
@@ -104,7 +127,8 @@ module system_tb;
         $fclose(cnsl2soc_fd);
         txread_reg = 0;
       end
-    end
+    end // while (1)
+     
   end
 
 system_top system_top
@@ -118,7 +142,20 @@ system_top system_top
    .uart_wdata (uart_wdata),
    .uart_wstrb (uart_wstrb),
    .uart_rdata (uart_rdata),
-   .uart_ready (uart_ready)
+   .uart_ready (uart_ready),
+
+   .im_pixel_x (pixel_x),
+   .im_pixel_y (pixel_y),
+   .im_rgb (rgb),
+   
+   .rgb(rgb),
+   .v_sync(v_sync),
+   .h_sync(h_sync),
+   .Red(Red),
+   .Green(Green),
+   .Blue(Blue),
+   .pixel_x(pixel_x),
+   .pixel_y(pixel_y)
    );
 
 

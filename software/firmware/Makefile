@@ -18,6 +18,9 @@ include $(SSD_DIR)/software/embedded/embedded.mk
 #im
 include $(IM_DIR)/software/embedded/embedded.mk
 
+#gpio
+include $(GPIO_DIR)/software/embedded/embedded.mk
+
 #HEADERS
 HDR+=periphs.h
 
