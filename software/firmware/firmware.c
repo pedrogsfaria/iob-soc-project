@@ -20,8 +20,8 @@ int main()
 
   printf("\n\n\nInit Done!\n\n\n"); 
   
-  uint16_t ssd_display = 0x0123;
-  uint8_t mblock = 2;
+  uint16_t ssd_display = 0x0126;
+  uint8_t mblock = 1;
 
   printf("\n\nInit done \n");
   

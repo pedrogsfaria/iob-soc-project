@@ -92,7 +92,6 @@ firmware.hex: $(FIRM_DIR)/firmware.bin
 im_rom: 
 	cp $(IM_ROM_DIR)/rom0.hex .
 	cp $(IM_ROM_DIR)/rom1.hex .
-	cp $(IM_ROM_DIR)/rom2.hex .
 
 
 #clean general hardware files

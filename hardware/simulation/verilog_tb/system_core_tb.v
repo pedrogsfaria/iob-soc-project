@@ -55,7 +55,7 @@ module system_tb;
   initial begin
 
      
-     #(1000000000/100) reset = 1;
+     #(1000000000/10) reset = 1;
      
      $display("Got here");
      
